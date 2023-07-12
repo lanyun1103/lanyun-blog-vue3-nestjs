@@ -1,32 +1,31 @@
 <script setup lang="ts">
-import MenuComponent from '@/components/MenuComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
 import ModalWrap from '@/components/ModalWrap.vue'
 
 import { ref } from 'vue'
-import FrontArticleComponent from '@/components/FrontArticleComponent.vue';
+import FrontArticleComponent from '@/components/FrontArticleComponent.vue'
 const isModalShow = ref(false)
-const isSideBarOpen = ref(false)
-
-const sideBarDisplayText = '嘻嘻🤭'
-const openedSideBarDisplayText = '你好😄'
-
-const articles = [{
-  'title': "first",
-  'author': 'wky'
-},{
-  'title': "first",
-  'author': 'wky'
-},{
-  'title': "first",
-  'author': 'wky'
-},{
-  'title': "first",
-  'author': 'wky'
-},{
-  'title': "first",
-  'author': 'wky'
-},]
+const articles = [
+  {
+    title: '深度学习相关论文',
+    author: 'wky'
+  },
+  {
+    title: '深度学习面试',
+    author: 'wky'
+  },
+  {
+    title: 'ACL 优秀论文',
+    author: 'wky'
+  },
+  {
+    title: '损失函数',
+    author: 'wky'
+  },
+  {
+    title: 'web.dev教程',
+    author: 'wky'
+  }
+]
 
 const showModal = () => {
   isModalShow.value = true
@@ -34,22 +33,9 @@ const showModal = () => {
 const closeModal = () => {
   isModalShow.value = false
 }
-
-const showSideBar = () => {
-  isSideBarOpen.value = true
-}
-
-const hideSideBar = () => {
-  isSideBarOpen.value = false
-}
 </script>
 
 <template>
-  <MenuComponent />
-  <div class="absolute w-5 mt-8 transition-all duration-500 delay-150 transform bg-blue-200 shadow-xl h-3/5 rounded-r-xl hover:scale-y-105" id="sidebar" @mouseover="showSideBar" @mouseleave="hideSideBar">
-    <p v-if="!isSideBarOpen">{{ sideBarDisplayText }}</p>
-    <p v-else class="text-center" >{{ openedSideBarDisplayText }}</p>
-  </div>
   <main class="bg-gray-50 main-page">
     <div class="container px-10 py-20 pt-10 mx-auto">
       <img
@@ -63,19 +49,18 @@ const hideSideBar = () => {
       <div class="w-full mx-auto mt-20">
         <div class="grid">
           <div class="grid grid-cols-2 gap-x-9">
-            <FrontArticleComponent           
-            v-for="(item, index) in articles"
+            <FrontArticleComponent
+              v-for="(item, index) in articles"
               :key="index"
               :author="item.author"
               :title="item.title"
-              />
+            />
           </div>
         </div>
       </div>
     </div>
     <ModalWrap :show-modal="isModalShow" @closeModal="closeModal" />
   </main>
-  <FooterComponent />
 </template>
 <style>
 .main-page::before {
@@ -90,11 +75,11 @@ const hideSideBar = () => {
   background-image: url('/bg.jpg');
 }
 #sidebar {
-    transition: width 0.8s;
-    overflow: hidden;
+  transition: width 0.8s;
+  overflow: hidden;
 }
 
 #sidebar:hover {
-    width: 400px;
+  width: 400px;
 }
 </style>

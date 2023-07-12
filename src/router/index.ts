@@ -18,6 +18,16 @@ const router = createRouter({
       path: '/blogPage/:id',
       name: 'blogPage',
       component: () => import('../views/blogContentPage/BlogPageContent.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/about/AboutMe.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/contact/ContactMe.vue')
     }
   ]
 })

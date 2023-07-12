@@ -4,7 +4,29 @@ import FooterComponent from '@/components/FooterComponent.vue'
 import ModalWrap from '@/components/ModalWrap.vue'
 
 import { ref } from 'vue'
+import FrontArticleComponent from '@/components/FrontArticleComponent.vue';
 const isModalShow = ref(false)
+const isSideBarOpen = ref(false)
+
+const sideBarDisplayText = '嘻嘻🤭'
+const openedSideBarDisplayText = '你好😄'
+
+const articles = [{
+  'title': "first",
+  'author': 'wky'
+},{
+  'title': "first",
+  'author': 'wky'
+},{
+  'title': "first",
+  'author': 'wky'
+},{
+  'title': "first",
+  'author': 'wky'
+},{
+  'title': "first",
+  'author': 'wky'
+},]
 
 const showModal = () => {
   isModalShow.value = true
@@ -12,11 +34,23 @@ const showModal = () => {
 const closeModal = () => {
   isModalShow.value = false
 }
+
+const showSideBar = () => {
+  isSideBarOpen.value = true
+}
+
+const hideSideBar = () => {
+  isSideBarOpen.value = false
+}
 </script>
 
 <template>
+  <MenuComponent />
+  <div class="absolute w-5 mt-8 transition-all duration-500 delay-150 transform bg-blue-200 shadow-xl h-3/5 rounded-r-xl hover:scale-y-105" id="sidebar" @mouseover="showSideBar" @mouseleave="hideSideBar">
+    <p v-if="!isSideBarOpen">{{ sideBarDisplayText }}</p>
+    <p v-else class="text-center" >{{ openedSideBarDisplayText }}</p>
+  </div>
   <main class="bg-gray-50 main-page">
-    <MenuComponent />
     <div class="container px-10 py-20 pt-10 mx-auto">
       <img
         class="w-full max-h-40"
@@ -29,72 +63,12 @@ const closeModal = () => {
       <div class="w-full mx-auto mt-20">
         <div class="grid">
           <div class="grid grid-cols-2 gap-x-9">
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
-
-            <div class="h-12 my-4">
-              <div
-                class="flex items-center justify-between h-full cursor-pointer rounded-3xl bg-blue-50 hover:bg-blue-100"
-              >
-                <div class="flex max-w-lg ml-10 hover:scale-90">文章标题1</div>
-                <div class="flex pr-4">作者：wky</div>
-              </div>
-            </div>
+            <FrontArticleComponent           
+            v-for="(item, index) in articles"
+              :key="index"
+              :author="item.author"
+              :title="item.title"
+              />
           </div>
         </div>
       </div>
@@ -114,5 +88,13 @@ const closeModal = () => {
   filter: blur(5px);
   z-index: -1;
   background-image: url('/bg.jpg');
+}
+#sidebar {
+    transition: width 0.8s;
+    overflow: hidden;
+}
+
+#sidebar:hover {
+    width: 400px;
 }
 </style>

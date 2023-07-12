@@ -6,13 +6,13 @@
       <nav class="p-6">
         <div class="flex items-center justify-between">
           <div>
-            <a href="/" class="text-lg font-semibold text-gray-800">My Website</a>
+            <a href="/" class="text-lg font-semibold text-gray-800">蓝云森林</a>
           </div>
           <div>
             <ul class="flex items-center space-x-4">
-              <li><a href="#" class="text-gray-500 hover:text-gray-800">Home</a></li>
-              <li><a href="#" class="text-gray-500 hover:text-gray-800">About</a></li>
-              <li><a href="#" class="text-gray-500 hover:text-gray-800">Contact</a></li>
+              <li><a href="#" class="text-gray-500 hover:text-gray-800">回家不~</a></li>
+              <li><a href="#" class="text-gray-500 hover:text-gray-800">关于我！</a></li>
+              <li><a href="#" class="text-gray-500 hover:text-gray-800">联系我？</a></li>
             </ul>
           </div>
         </div>

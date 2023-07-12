@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <div class="bg-gray-100">
+    <div class="bg-gradient-to-br from-indigo-300 to-blue-200">
       <nav class="p-6">
         <div class="flex items-center justify-between">
           <div>
